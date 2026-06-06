@@ -1,0 +1,77 @@
+# =============================
+# Ignore node modules and logs
+# =============================
+
+# Node modules (both root and per-package)
+node_modules/
+**/node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# =============================
+# Environment and secret files
+# =============================
+
+# Ignore dotenv files that contain secrets
+.env
+.env.*
+
+# Per-folder dotenv examples (frontend/backend)
+frontend/.env
+frontend/.env.*
+backend/.env
+backend/.env.*
+
+# Keys, certs and keystores
+*.pem
+*.key
+*.p12
+*.jks
+*.crt
+*.cer
+
+# =============================
+# Build / output
+# =============================
+
+dist/
+build/
+frontend/build/
+coverage/
+coverage/**
+dist/**
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# =============================
+# IDE / Editor
+# =============================
+
+.vscode/
+.idea/
+*.sublime-*
+.history/
+.cache/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Optional: lockfiles are usually committed; uncomment to ignore if desired
+# package-lock.json
+# yarn.lock
