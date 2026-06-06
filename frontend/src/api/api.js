@@ -8,8 +8,8 @@
 
 import axios from "axios";
 
-// Change this to your backend URL (e.g. http://localhost:5000)
-const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+// Change this to your backend URL if not using the default Render deployment.
+const BASE_URL = process.env.REACT_APP_API_URL || "https://job-application-tracker-backend-j5cx.onrender.com";
 
 // ── Helper: build headers with JWT token ─────────────────────────────────────
 function authHeaders() {
