@@ -126,6 +126,15 @@ npm install
 npm start
 ```
 
+## Live Demo
+
+Frontend: https://job-application-tracker-vercel.vercel.app
+
+Backend API: https://job-application-tracker-backend-j5cx.onrender.com
+
+GitHub Repository:
+https://github.com/saishashank2608/job-application-tracker
+
 ## Environment Variables
 
 Create a `.env` file inside the backend folder:
