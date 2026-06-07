@@ -27,8 +27,18 @@ function IconBell() {
   );
 }
 
+function IconMenu() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#434655" strokeWidth={2}>
+      <line x1="4" y1="7" x2="20" y2="7" />
+      <line x1="4" y1="12" x2="20" y2="12" />
+      <line x1="4" y1="17" x2="20" y2="17" />
+    </svg>
+  );
+}
+
 // ── TopNavbar Component ───────────────────────────────────────────────────────
-export default function TopNavbar({ searchQuery, onSearchChange }) {
+export default function TopNavbar({ searchQuery, onSearchChange, onMenuClick }) {
   const navigate = useNavigate();
 
   // Get user's initials from localStorage (set during login)
@@ -49,9 +59,8 @@ export default function TopNavbar({ searchQuery, onSearchChange }) {
 
   return (
     <header
-      className="fixed top-0 right-0 flex items-center gap-4 px-6"
+      className="relative md:fixed top-0 left-0 right-0 md:left-[232px] flex items-center gap-4 px-4 md:px-6"
       style={{
-        left: 232,              // same as sidebar width
         height: 64,
         background: "#ffffff",
         borderBottom: "1px solid #e2e7ff",
@@ -59,6 +68,14 @@ export default function TopNavbar({ searchQuery, onSearchChange }) {
       }}
     >
       {/* ── Search bar ── */}
+      <button
+        onClick={onMenuClick}
+        className="md:hidden flex items-center justify-center rounded-lg p-2 text-[#434655] hover:bg-[#f2f3ff] transition-colors"
+        aria-label="Open sidebar"
+      >
+        <IconMenu />
+      </button>
+
       <div className="relative flex-1 max-w-sm">
         <span className="absolute left-3 top-1/2 -translate-y-1/2">
           <IconSearch />

@@ -30,6 +30,7 @@ export default function Analytics() {
   // ── useState: data ──
   const [stats,    setStats]    = useState(null);
   const [jobs,     setJobs]     = useState([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [loading,  setLoading]  = useState(true);
   const [error,    setError]    = useState("");
 
@@ -62,11 +63,11 @@ export default function Analytics() {
     : 1;
 
   return (
-    <div className="flex min-h-screen" style={{ background: "#faf8ff" }}>
-      <Sidebar onAddClick={() => {}} />
+    <div className="flex min-h-screen flex-col md:flex-row" style={{ background: "#faf8ff" }}>
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} onAddClick={() => {}} />
 
-      <div style={{ marginLeft: 232, flex: 1 }}>
-        <TopNavbar searchQuery="" onSearchChange={() => {}} />
+      <div className="flex-1 md:ml-[232px]">
+        <TopNavbar searchQuery="" onSearchChange={() => {}} onMenuClick={() => setIsSidebarOpen(true)} />
 
         <main style={{ paddingTop: 64 }}>
           <div style={{ padding: "32px 32px 40px" }}>
@@ -108,7 +109,7 @@ export default function Analytics() {
             )}
 
             {!loading && stats && (
-              <div className="grid gap-6" style={{ gridTemplateColumns: "1fr 1fr" }}>
+              <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
 
                 {/* ── Status Breakdown Bar Chart ── */}
                 <div className="card" style={{ padding: "24px", gridColumn: "1 / -1" }}>

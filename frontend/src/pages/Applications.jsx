@@ -37,6 +37,7 @@ export default function Applications() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [editingJob, setEditingJob] = useState(null);
@@ -144,10 +145,10 @@ export default function Applications() {
   });
 
   return (
-    <div className="flex min-h-screen" style={{ background: "#faf8ff" }}>
-      <Sidebar onAddClick={handleAddOpen} />
-      <div style={{ marginLeft: 232, flex: 1 }}>
-        <TopNavbar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+    <div className="flex min-h-screen flex-col md:flex-row" style={{ background: "#faf8ff" }}>
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} onAddClick={handleAddOpen} />
+      <div className="flex-1 md:ml-[232px]">
+        <TopNavbar searchQuery={searchQuery} onSearchChange={setSearchQuery} onMenuClick={() => setIsSidebarOpen(true)} />
         <main style={{ paddingTop: 64 }}>
           <div style={{ padding: "32px 32px 40px" }}>
             <div className="flex items-start justify-between mb-6">

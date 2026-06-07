@@ -6,7 +6,7 @@
 // =============================================
 
 import React from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 // ── Icon components (inline SVGs, no extra library) ───────────────────────────
 
@@ -82,19 +82,21 @@ const NAV_ITEMS = [
 ];
 
 // ── Sidebar Component ─────────────────────────────────────────────────────────
-export default function Sidebar({ onAddClick }) {
+export default function Sidebar({ onAddClick, isOpen = true, onClose }) {
   // useLocation lets us know which route is currently active
   const location = useLocation();
 
   return (
-    <aside
-      className="fixed left-0 top-0 h-screen flex flex-col"
-      style={{
-        width: 232,
-        background: "#ffffff",
-        borderRight: "1px solid #e2e7ff",
-      }}
-    >
+    <>
+      <div
+        className={`fixed inset-0 bg-black/30 z-30 md:hidden ${isOpen ? "block" : "hidden"}`}
+        onClick={onClose}
+      />
+      <aside
+        className={`fixed inset-y-0 left-0 z-40 transform transition-transform duration-200 bg-white border-r border-[#e2e7ff] w-full md:relative md:w-[232px] ${
+          isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+        } flex flex-col h-full md:h-screen`}
+      >
       {/* ── Logo ── */}
       <div className="flex items-center gap-3 px-5 py-5">
         <LogoMark />
@@ -150,5 +152,6 @@ export default function Sidebar({ onAddClick }) {
         </div>
       </div>
     </aside>
+    </>
   );
 }

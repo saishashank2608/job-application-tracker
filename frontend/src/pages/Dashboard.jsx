@@ -118,6 +118,7 @@ export default function Dashboard() {
   // ── useState: data ──
   const [jobs,  setJobs]  = useState([]);
   const [stats, setStats] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // ── useState: UI state ──
   const [loading,     setLoading]     = useState(true);
@@ -261,14 +262,14 @@ export default function Dashboard() {
 
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
-    <div className="flex min-h-screen" style={{ background: "#faf8ff" }}>
+    <div className="flex min-h-screen flex-col md:flex-row" style={{ background: "#faf8ff" }}>
       {/* Sidebar */}
-      <Sidebar onAddClick={handleAddOpen} />
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} onAddClick={handleAddOpen} />
 
-      {/* Main content — offset by sidebar width */}
-      <div style={{ marginLeft: 232, flex: 1 }}>
+      {/* Main content — offset by sidebar width on desktop */}
+      <div className="flex-1 md:ml-[232px]">
         {/* Top Navbar */}
-        <TopNavbar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+        <TopNavbar searchQuery={searchQuery} onSearchChange={setSearchQuery} onMenuClick={() => setIsSidebarOpen(true)} />
 
         {/* Page content — offset by navbar height */}
         <main style={{ paddingTop: 64 }}>
